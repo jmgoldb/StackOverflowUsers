@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C613708207702E400011F2B /* UsersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C613707207702E400011F2B /* UsersTableViewCell.m */; };
 		7C8FF3732076B906009690D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8FF3722076B906009690D2 /* AppDelegate.m */; };
 		7C8FF3762076B906009690D2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8FF3752076B906009690D2 /* ViewController.m */; };
 		7C8FF3792076B906009690D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8FF3772076B906009690D2 /* Main.storyboard */; };
 		7C8FF37B2076B907009690D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C8FF37A2076B907009690D2 /* Assets.xcassets */; };
 		7C8FF37E2076B907009690D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C8FF37C2076B907009690D2 /* LaunchScreen.storyboard */; };
 		7C8FF3812076B907009690D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8FF3802076B907009690D2 /* main.m */; };
+		7C8FF3892076B9B2009690D2 /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8FF3882076B9B2009690D2 /* UsersTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C613706207702E400011F2B /* UsersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsersTableViewCell.h; sourceTree = "<group>"; };
+		7C613707207702E400011F2B /* UsersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsersTableViewCell.m; sourceTree = "<group>"; };
 		7C8FF36E2076B906009690D2 /* StackOverFlowUsers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverFlowUsers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8FF3712076B906009690D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7C8FF3722076B906009690D2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		7C8FF37D2076B907009690D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C8FF37F2076B907009690D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C8FF3802076B907009690D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7C8FF3872076B9B2009690D2 /* UsersTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsersTableViewController.h; sourceTree = "<group>"; };
+		7C8FF3882076B9B2009690D2 /* UsersTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsersTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,10 @@
 				7C8FF37C2076B907009690D2 /* LaunchScreen.storyboard */,
 				7C8FF37F2076B907009690D2 /* Info.plist */,
 				7C8FF3802076B907009690D2 /* main.m */,
+				7C8FF3872076B9B2009690D2 /* UsersTableViewController.h */,
+				7C8FF3882076B9B2009690D2 /* UsersTableViewController.m */,
+				7C613706207702E400011F2B /* UsersTableViewCell.h */,
+				7C613707207702E400011F2B /* UsersTableViewCell.m */,
 			);
 			path = StackOverFlowUsers;
 			sourceTree = "<group>";
@@ -141,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C613708207702E400011F2B /* UsersTableViewCell.m in Sources */,
 				7C8FF3762076B906009690D2 /* ViewController.m in Sources */,
 				7C8FF3812076B907009690D2 /* main.m in Sources */,
+				7C8FF3892076B9B2009690D2 /* UsersTableViewController.m in Sources */,
 				7C8FF3732076B906009690D2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
