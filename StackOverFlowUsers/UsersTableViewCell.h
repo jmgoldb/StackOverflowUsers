@@ -10,4 +10,8 @@
 
 @interface UsersTableViewCell : UITableViewCell
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
+@property (nonatomic) IBOutlet UILabel *dateLabel;
+@property (nonatomic) IBOutlet UILabel *usernameLabel;
+@property (nonatomic) IBOutlet UILabel *locationLabel;
+@property (nonatomic) IBOutlet UIImageView *profileImageView;
 @end

@@ -93,37 +93,38 @@
 
     
     NSDictionary *tempDictionary = [self.userArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [tempDictionary objectForKey:@"display_name"];
-    cell.detailTextLabel.text = [tempDictionary objectForKey:@"location"];
+    cell.usernameLabel.text = [tempDictionary objectForKey:@"display_name"];
+    cell.locationLabel.text = [tempDictionary objectForKey:@"location"];
+    NSNumber *timeIntervalNumber = (NSNumber *)[tempDictionary objectForKey:@"last_access_date"];
+    NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:[timeIntervalNumber doubleValue]];
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterNoStyle];
+    cell.dateLabel.text = dateString;
     
-    
-    
-    cell.imageView.image = nil;
+    //Set image to nil and have activityIndicator
+    cell.profileImageView.image = nil;
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.hidesWhenStopped = YES;
     [spinner startAnimating];
-    spinner.frame = cell.imageView.frame;
-    UIView *parent = [cell.imageView superview];
+    spinner.frame = cell.profileImageView.frame;
+    UIView *parent = [cell.profileImageView superview];
     [parent addSubview:spinner];
     [parent bringSubviewToFront:spinner];
     cell.spinner = spinner;
+    
+    
+    //Get image url as a string
     NSString *imgURLString = (NSString *)[tempDictionary objectForKey:@"profile_image"];
     if ([self.imageDictionary valueForKey:imgURLString]) {
-        cell.imageView.image = [self.imageDictionary valueForKey:imgURLString];
+        //load from cache
+        cell.profileImageView.image = [self.imageDictionary valueForKey:imgURLString];
     }
     else
     {
+        //download and save to cache
         [self performSelectorInBackground:@selector(downloadImage:) withObject:indexPath];
     }
-    
-    
-    NSURL *url = [NSURL URLWithString:[tempDictionary objectForKey:@"profile_image"]];
-    UIImage *loadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    cell.imageView.image = loadedImage;
-    //[spinner stopAnimating];
-    
-    
-
     
     return cell;
 }
@@ -132,9 +133,11 @@
     NSDictionary *tempDictionary = [self.userArray objectAtIndex:path.row];
     NSURL *url = [NSURL URLWithString:[tempDictionary objectForKey:@"profile_image"]];
     UIImage *loadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    //save to cache
+    [self.imageDictionary setObject:loadedImage forKey:[tempDictionary objectForKey:@"profile_image"]];
     dispatch_async(dispatch_get_main_queue(), ^{
         UsersTableViewCell *myCell = (UsersTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
-        myCell.imageView.image = loadedImage;
+        myCell.profileImageView.image = loadedImage;
         [myCell.spinner stopAnimating];
     });
 }
