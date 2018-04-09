@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Stack Overflow Users-->
         <scene sceneID="Fn1-eB-3uK">
             <objects>
                 <tableViewController id="yVV-gt-Wry" customClass="UsersTableViewController" sceneMemberID="viewController">
@@ -100,7 +100,7 @@
                             <outlet property="delegate" destination="yVV-gt-Wry" id="tVU-vo-aVq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="vgM-s3-YnT"/>
+                    <navigationItem key="navigationItem" title="Stack Overflow Users" id="vgM-s3-YnT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pda-Te-W5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

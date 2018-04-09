@@ -32,7 +32,7 @@
 
 - (void)processDataFromJSON:(NSDictionary *)jsonDictionary
 {
-    self.userArray = [jsonDictionary objectForKey:@"items"];
+    self.userArray = jsonDictionary[@"items"];
     return;
 }
 
@@ -92,10 +92,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     
-    NSDictionary *tempDictionary = [self.userArray objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [tempDictionary objectForKey:@"display_name"];
-    cell.locationLabel.text = [tempDictionary objectForKey:@"location"];
-    NSNumber *timeIntervalNumber = (NSNumber *)[tempDictionary objectForKey:@"last_access_date"];
+    NSDictionary *tempDictionary = self.userArray[indexPath.row];
+    cell.usernameLabel.text = tempDictionary[@"display_name"];
+    cell.locationLabel.text = tempDictionary[@"location"];
+    NSNumber *timeIntervalNumber = (NSNumber *)tempDictionary[@"last_access_date"];
     NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:[timeIntervalNumber doubleValue]];
     NSString *dateString = [NSDateFormatter localizedStringFromDate:date
                                                           dateStyle:NSDateFormatterShortStyle
@@ -115,10 +115,11 @@
     
     
     //Get image url as a string
-    NSString *imgURLString = (NSString *)[tempDictionary objectForKey:@"profile_image"];
-    if ([self.imageDictionary valueForKey:imgURLString]) {
+    NSString *imgURLString = (NSString *)tempDictionary[@"profile_image"];
+    if (self.imageDictionary[imgURLString]) {
         //load from cache
-        cell.profileImageView.image = [self.imageDictionary valueForKey:imgURLString];
+        cell.profileImageView.image = self.imageDictionary[imgURLString];
+        [cell.spinner stopAnimating];
     }
     else
     {
@@ -130,11 +131,11 @@
 }
 - (void)downloadImage:(NSIndexPath *)path
 {
-    NSDictionary *tempDictionary = [self.userArray objectAtIndex:path.row];
-    NSURL *url = [NSURL URLWithString:[tempDictionary objectForKey:@"profile_image"]];
+    NSDictionary *tempDictionary = self.userArray[path.row];
+    NSURL *url = [NSURL URLWithString:tempDictionary[@"profile_image"]];
     UIImage *loadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     //save to cache
-    [self.imageDictionary setObject:loadedImage forKey:[tempDictionary objectForKey:@"profile_image"]];
+    [self.imageDictionary setObject:loadedImage forKey:tempDictionary[@"profile_image"]];
     dispatch_async(dispatch_get_main_queue(), ^{
         UsersTableViewCell *myCell = (UsersTableViewCell *)[self.tableView cellForRowAtIndexPath:path];
         myCell.profileImageView.image = loadedImage;
