@@ -38,10 +38,10 @@
 
 - (void)makeAPIRequest
 {
-    static NSString *urlString = @"https://api.stackexchange.com/2.2/users?site=stackoverflow";
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [NSURL URLWithString:@"https://api.stackexchange.com/2.2/users?site=stackoverflow"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+    NSURLSessionDataTask *task =[[NSURLSession sharedSession] dataTaskWithRequest:request
+                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
     {
         NSLog(@"RESPONSE: %@",response);
         
@@ -49,15 +49,17 @@
             // Success
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                 NSError *jsonError;
-                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                             options:0
+                                                                               error:&jsonError];
                 
                 if (jsonError) {
                     // Error Parsing JSON
-                    
+                    NSLog(@"Error Parsing JSON!");
                 } else {
                     // Success Parsing JSON
                     // Log NSDictionary response:
-                    NSLog(@"%@",jsonResponse);
+                    //NSLog(@"%@",jsonResponse);
                     [self processDataFromJSON:jsonResponse];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.tableView reloadData];
@@ -65,13 +67,15 @@
                 }
             }  else {
                 //Web server is returning an error
+                NSLog(@"Web server is returning an error!");
             }
         } else {
             // Fail
             NSLog(@"error : %@", error.description);
         }
     }
-                     ] resume];
+                     ];
+    [task resume];
 }
 
 #pragma mark - Table view data source
@@ -87,7 +91,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"Cell";
-    UsersTableViewCell *cell = (UsersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    UsersTableViewCell *cell = (UsersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier
+                                                                                     forIndexPath:indexPath];
     // Configure the cell...
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -142,16 +147,5 @@
         [myCell.spinner stopAnimating];
     });
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
