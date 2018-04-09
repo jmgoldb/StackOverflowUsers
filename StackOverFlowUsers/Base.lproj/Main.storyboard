@@ -26,7 +26,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebb-ac-Cgz" userLabel="Date">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="Ebb-ac-Cgz" userLabel="Date">
                                             <rect key="frame" x="314" y="15" width="36" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -47,13 +47,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jw9-Sr-q1f">
-                                            <rect key="frame" x="174" y="15" width="100" height="20.5"/>
+                                            <rect key="frame" x="174" y="15" width="100" height="21"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PRF-Ea-FGt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="0S0-Ob-pB2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20.5" id="wi2-QR-L7Y"/>
                                                                 <constraint firstAttribute="width" constant="100" id="yoY-Ub-UmE"/>
@@ -73,17 +73,20 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="aUu-kI-MXk" firstAttribute="leading" secondItem="H4C-g1-3nf" secondAttribute="trailing" constant="8" id="24r-3e-aNt"/>
-                                        <constraint firstItem="Ebb-ac-Cgz" firstAttribute="leading" secondItem="jw9-Sr-q1f" secondAttribute="trailing" constant="40" id="A3T-dQ-Mg0"/>
+                                        <constraint firstItem="Ebb-ac-Cgz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jw9-Sr-q1f" secondAttribute="trailing" constant="20" id="A3T-dQ-Mg0"/>
+                                        <constraint firstItem="0S0-Ob-pB2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aUu-kI-MXk" secondAttribute="trailing" constant="10" id="BUB-fa-E5G"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ebb-ac-Cgz" secondAttribute="trailing" constant="9" id="Cgp-jx-kIe"/>
+                                        <constraint firstItem="Ebb-ac-Cgz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jw9-Sr-q1f" secondAttribute="trailing" constant="8" symbolic="YES" id="DTE-IU-nb8"/>
                                         <constraint firstItem="Ebb-ac-Cgz" firstAttribute="top" secondItem="Yyp-sh-huK" secondAttribute="topMargin" constant="4" id="Gg6-88-Njf"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Ebb-ac-Cgz" secondAttribute="bottom" constant="4" id="KvN-Br-q1d"/>
                                         <constraint firstItem="H4C-g1-3nf" firstAttribute="leading" secondItem="Yyp-sh-huK" secondAttribute="leadingMargin" constant="-4" id="MLy-rK-Z7D"/>
+                                        <constraint firstItem="Ebb-ac-Cgz" firstAttribute="leading" secondItem="Yyp-sh-huK" secondAttribute="leading" constant="314" id="QbV-1c-wkb"/>
                                         <constraint firstItem="jw9-Sr-q1f" firstAttribute="top" secondItem="Ebb-ac-Cgz" secondAttribute="top" id="T6R-Bj-HCs"/>
+                                        <constraint firstItem="Ebb-ac-Cgz" firstAttribute="leading" secondItem="jw9-Sr-q1f" secondAttribute="trailing" constant="40" id="Tbd-5I-LFE"/>
                                         <constraint firstItem="aUu-kI-MXk" firstAttribute="baseline" secondItem="Ebb-ac-Cgz" secondAttribute="baseline" id="WLs-uX-7L1"/>
                                         <constraint firstItem="aUu-kI-MXk" firstAttribute="centerY" secondItem="Yyp-sh-huK" secondAttribute="centerY" id="fjq-y6-7Oh"/>
                                         <constraint firstItem="Ebb-ac-Cgz" firstAttribute="centerY" secondItem="H4C-g1-3nf" secondAttribute="centerY" id="lnm-A6-5fR"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aUu-kI-MXk" secondAttribute="trailing" constant="20" symbolic="YES" id="mCU-ns-iw7"/>
-                                        <constraint firstItem="Ebb-ac-Cgz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yyp-sh-huK" secondAttribute="leadingMargin" id="rAW-mS-Ij0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -38,11 +38,18 @@
 
 - (void)makeAPIRequest
 {
+   
+    
     NSURL *url = [NSURL URLWithString:@"https://api.stackexchange.com/2.2/users?site=stackoverflow"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionDataTask *task =[[NSURLSession sharedSession] dataTaskWithRequest:request
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
     {
+        UIAlertController *alert;
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        
         NSLog(@"RESPONSE: %@",response);
         
         if (!error) {
@@ -56,6 +63,15 @@
                 if (jsonError) {
                     // Error Parsing JSON
                     NSLog(@"Error Parsing JSON!");
+                    alert = [UIAlertController alertControllerWithTitle:@"Error!"
+                                                                message:jsonError.description
+                                                         preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alert addAction:okAction];
+                    [self presentViewController:alert
+                                       animated:YES
+                                     completion:nil];
+                    
                 } else {
                     // Success Parsing JSON
                     // Log NSDictionary response:
@@ -68,10 +84,24 @@
             }  else {
                 //Web server is returning an error
                 NSLog(@"Web server is returning an error!");
+                alert = [UIAlertController alertControllerWithTitle:@"Error!"
+                                                            message:@"Web server returned an error!"
+                                                     preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:okAction];
+                [self presentViewController:alert
+                                   animated:YES
+                                 completion:nil];
             }
         } else {
             // Fail
             NSLog(@"error : %@", error.description);
+            alert = [UIAlertController alertControllerWithTitle:@"Error!"
+                                                        message:error.description
+                                                 preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:okAction];
+            [self presentViewController:alert
+                               animated:YES
+                             completion:nil];
         }
     }
                      ];
